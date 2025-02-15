@@ -1,0 +1,111 @@
+{% extends "admin_dashboard.html" %}
+
+{% block title %}Show Subject {% endblock %}
+
+{% block admin_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-left" style="margin-top: 50px; font-weight: bolder;">SUBJECT:-{{subject.subject_name}}</h1>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addunitModal">
+        Add Unit to {{subject.subject_name}}
+      </button>
+
+      <div class="modal fade" id="addunitModal" tabindex="-1" aria-labelledby="addunitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addunitModalLabel">Add A Unit</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/add_unit/{{subject.id}}" method="POST">
+                <div class="mb-3">
+                  <label for="unit_name" class="form-label">Unit Name</label>
+                  <input type="text" class="form-control" id="unit_name" aria-describedby="unit_name_help" name="unit_name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Unit Description</label>
+                  <textarea class="form-control" id="description" aria-describedby="description_help" name="description" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Add </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+      <p class="text-left" style="margin-top: 10px; font-weight: bold; font-size: large">Here are the Units available in
+        the Subject</p>
+      <table class="table" style="margin-top: 50px; border: 2px solid black;">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Unit Name</th>
+            <th scope="col">Unit Description</th>
+            <th scope="col" style="width: auto">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for unit in unit %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ unit.unit_name }}</td>
+            <td>{{ unit.description }}</td>
+            <td>
+              <a href="/show_unit/{{unit.id}}" class="btn btn-success">Show</a>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUnitModal{{loop.index}}">
+                Edit
+              </button>
+              <div class="modal fade" id="editUnitModal{{loop.index}}" tabindex="-1" aria-labelledby="editUnitModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editUnitModalLabel">Edit Unit</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="/edit_unit/{{unit.id}}" method="POST">
+                        <div class="mb-3">
+                          <label for="unit_name" class="form-label">Unit Name</label>
+                          <input type="text" class="form-control" id="unit_name" aria-describedby="unit_name_help" name="unit_name" value="{{unit.unit_name}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="description" class="form-label">Unit Description</label>
+                          <textarea class="form-control" id="description" aria-describedby="description_help" name="description" required>{{unit.description}}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Edit </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                Delete
+              </button>
+              <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel">Delete Unit</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to Delete this Unit
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a href="/delete_unit/{{unit.id}}" class="btn btn-danger">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

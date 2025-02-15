@@ -1,0 +1,29 @@
+{% extends "admin_dashboard.html" %}
+
+{% block title %} Users {% endblock %}
+
+{% block admin_content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card hieght-auto">
+            <div class="card-header">
+                <h4>Subject-wise Top Scores</h4>
+            </div>
+            <div class="card-body d-flex h-100">
+                <img src="{{ top_scores_img }}" alt="Top Scores Bar Chart" class="img-fluid mx-auto d-block" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card hieght-auto">
+            <div class="card-header">
+                <h4>Subject-wise User Attempts</h4>
+            </div>
+            <div class="card-body d-flex h-100">
+                <img src="{{ user_attempts_img }}" alt="User Attempts Pie Chart" class="img-fluid mx-auto d-block" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

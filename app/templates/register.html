@@ -1,0 +1,98 @@
+{% extends "home.html" %}
+
+{% block title %} Quizmaster-Register {% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-image: url("/static/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center  ">
+            <div class="col col-xl-20">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-1">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="\static\logo.png" alt="register form" class="img-fluid h-100 w-100"
+                                style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+
+                                <form method="POST" action="/register">
+                                    <div class="form-group">
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0" style="letter-spacing: 4px;">QUIZMASTER</span>
+                                        </div>
+
+                                        <h5 class="fw-bold  mb-2 pb-1" style="letter-spacing: 1px; ">Create An
+                                            Account Now :-</h5>
+
+                                        <div>
+                                            <label for="full_name" class="form-label fw-bold"
+                                                style="color: #9A616D;">Full Name</label>
+                                            <input type="text" class="form-control" id="full_name" name="full_name"
+                                                required placeholder="XYZ">
+                                        </div>
+
+
+                                        <label for="email" class="form-label fw-bold" style="color: #9A616D;">Email
+                                            address</label>
+                                        <input type="email" class="form-control" id="email" name="email" required
+                                            placeholder="xyz123@gmail.com">
+                                    </div>
+
+                                    <div>
+                                        <label for="password" class="form-label fw-bold"
+                                            style="color: #9A616D;">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required placeholder="********">
+                                    </div>
+
+                                    <div>
+                                        <label for="edu_qualification" class="form-label fw-bold"
+                                            style="color: #9A616D;">Educational Qualification</label>
+                                        <input type="text" class="form-control" id="edu_qualification"
+                                            name="edu_qualification" required placeholder="B.E./B.Tech/BSc/BA">
+                                    </div>
+
+                                    <div>
+                                        <label for="dob" class="form-label fw-bold" style="color: #9A616D;">Date of
+                                            Birth</label>
+                                        <input type="date" class="form-control" id="dob" name="dob" required
+                                            placeholder="01/01/">
+                                    </div>
+
+
+
+                                    <div class="pt-1 mb-4">
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
+                                    </div>
+
+
+                                    <p class="mb-1 pb-lg-0"
+                                        style="font-size:large; font-weight: bold;          color: #000000;">
+                                        Aldready
+                                        Have An Account....?
+
+                                        <a href="/login"
+                                            style="font-family:cursive; font-size: larger; font-weight: bold;  color: #9A616D;">Login
+                                            Here</a>
+                                    </p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

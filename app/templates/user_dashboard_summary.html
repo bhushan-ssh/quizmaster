@@ -1,0 +1,29 @@
+{% extends "user_dashboard.html" %}
+
+{% block title %} User Summary {% endblock %}
+
+{% block user_content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card hieght-auto">
+            <div class="card-header">
+                <h4>Subject-wise Quizzes Available</h4>
+            </div>
+            <div class="card-body d-flex h-100">
+                <img src="{{ subject_quizzes_img }}" alt="Subject Quizzes Bar Chart" class="img-fluid mx-auto d-block" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card hieght-auto">
+            <div class="card-header">
+                <h4>Month-wise Quizzes Attempted</h4>
+            </div>
+            <div class="card-body d-flex h-100">
+                <img src="{{ monthly_attempts_img }}" alt="Monthly Attempts Line Chart" class="img-fluid mx-auto d-block" style="max-width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

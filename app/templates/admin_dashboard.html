@@ -1,0 +1,170 @@
+{% extends "home.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light  solid-bg-navbar shadow-sm p-2">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" style="font-weight: bold; font-size: larger;" href="/admin_dashboard">QUIZMASTER</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/quiz">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin_dashboard/summary">Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin_dashboard/users">Users</a></li>
+        <li class="nav-item">
+          <button class="btn btn-danger btn-sm"style="margin-top: 5px;" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            LOGOUT
+          </button>
+        </li>
+      </ul>
+      <form class="d-flex input-group w-auto" method = "GET" action = "/admin_dashboard/search">
+        <input type="search" class="form-control" placeholder="Type query" aria-label="Search" name="search" />
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <div>
+          <h5 style="color:black; font-size: larger; font-weight: bold; margin-left: 100px; margin-top: 5px;">WELCOME
+            ADMIN</h5>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">LOGOUT</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">Are you sure you want to Logout?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  {% block admin_content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-left" style="margin-top: 50px; font-weight: bolder;">SUBJECTS</h1>
+        <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
+          Add A Subject
+        </button>
+        <div class="modal fade" id="addSubjectModal" tabindex="-1" aria-labelledby="addSubjectModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addSubjectModalLabel">Add A Subject</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/add_subject" method="POST">
+                  <div class="mb-3">
+                    <label for="subject_name" class="form-label">Subject Name</label>
+                    <input type="text" class="form-control" id="subject_name" aria-describedby="subject_name_help" name="subject_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Subject Description</label>
+                    <textarea class="form-control" id="description" aria-describedby="description_help" name="description" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Add </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <p class="text-left">Here are the subjects available in the system.</p>
+
+        <table class="table" style="margin-top: 50px; border: 2px solid black;">
+          <thead>
+            <tr>
+
+              <th scope="col">Sr.No.</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Subject Description</th>
+              <th scope="col" style="width: auto">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for subjects in all_subjects %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{ subjects.subject_name }}</td>
+              <td>{{ subjects.description }}</td>
+              <td>
+                <a href="/show_subject/{{subjects.id}}" class="btn btn-success">Show</a>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSubjectModal{{loop.index}}">
+                  Edit
+                </button>
+
+                <!-- Modal Structure -->
+                <div class="modal fade" id="editSubjectModal{{loop.index}}" tabindex="-1" aria-labelledby="editSubjectModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editSubjectModalLabel">Edit Subject</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="/edit_subject/{{subjects.id}}" method="POST">
+                          <div class="mb-3">
+                            <label for="subject_name" class="form-label">Subject Name</label>
+                            <input type="text" class="form-control" id="subject_name" aria-describedby="subject_name_help" name="subject_name" value="{{subjects.subject_name}}" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="description" class="form-label">Subject Description</label>
+                            <textarea class="form-control" id="description" aria-describedby="description_help" name="description" required>{{subjects.description}}</textarea>
+                          </div>
+                          <button type="submit" class="btn btn-primary w-100">Edit </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                  Delete
+                </button>
+
+                <!-- Modal Structure -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Delete Subject</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to Delete this Subject
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="/delete_subject/{{subjects.id}}" class="btn btn-danger">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endblock %}
+</section>
+{% endblock %}

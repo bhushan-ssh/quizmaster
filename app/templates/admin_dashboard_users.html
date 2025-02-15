@@ -1,0 +1,146 @@
+{% extends "admin_dashboard.html" %}
+
+{% block title %} Users {% endblock %}
+
+{% block admin_content %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-left" style="margin-top: 50px; font-weight: bolder;">USERS</h1>
+        
+
+
+
+
+        <p class="text-left">Here are the Users available in the system.</p>
+
+        <table class="table" style="margin-top: 50px; border: 2px solid black;">
+          <thead>
+            <tr>
+
+              <th scope="col">Sr.No.</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col" style="width: auto">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+            {% if user.email != 'admin1234@gmail.com' %}
+            <tr>
+              <th scope="row">{{loop.index-1}}</th>
+              <td>{{ user.full_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                {% if user.is_flagged %}
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#unflaguserModal{{user.id}}">
+                    Unflag
+                </button>
+                
+                {% else %}
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#flaguserModal{{user.id}}">
+                    Flag
+                </button>
+                
+                {% endif %}
+
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#showdetailsuserModal{{user.id}}">
+                    Details
+                </button>
+
+                <!-- Flag User Modal -->
+                <div class="modal fade" id="flaguserModal{{user.id}}" tabindex="-1" aria-labelledby="flaguserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="flaguserModalLabel">Flag User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to flag this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="/flag_user/{{user.id}}" class="btn btn-danger">Flag</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unflag User Modal -->
+                <div class="modal fade" id="unflaguserModal{{user.id}}" tabindex="-1" aria-labelledby="unflaguserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="unflaguserModalLabel">Unflag User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to unflag this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="/unflag_user/{{user.id}}" class="btn btn-success">Unflag</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Show Details User Modal -->
+                <div class="modal fade" id="showdetailsuserModal{{user.id}}" tabindex="-1" aria-labelledby="showdetailsuserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="showdetailsuserModalLabel">User Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Full Name:</strong> {{ user.full_name }}</p>
+                                <p><strong>Email:</strong> {{ user.email }}</p>
+                                <p><strong>Educational Qualification:</strong> {{ user.edu_qualification }}</p>
+                                <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
+                                <p><strong>Flagged:</strong> {{ 'Yes' if user.is_flagged else 'No' }}</p>
+                                <!-- Add more user details as needed -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!-- delete user modal -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteuserModal{{user.id}}">
+                    Delete
+                </button>
+                <div class="modal fade fade" id="deleteuserModal{{user.id}}" tabindex="-1" aria-labelledby="deleteuserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteuserModalLabel">Delete User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a href="/delete_user/{{user.id}}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endblock %}
+
+
+

@@ -1,0 +1,83 @@
+{% extends "user_dashboard.html" %}
+
+{% block title %} User Profile{% endblock %}
+
+{% block user_content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="width: 40rem; border-radius: 15px;">
+        <div class="card-body">
+            <div class="text-center mb-4">
+                <h3 class="card-title" style="font-weight: bold; font-size: 1.5rem; color: #1971ff;">User Profile</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">FULL NAME:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ user.full_name }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">EMAIL:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ user.email }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">EDUCATIONAL QUALIFICATION:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ user.edu_qualification }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">DATE OF BIRTH:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ user.dob }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">ADMIN:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ 'Yes' if user.if_admin else 'No' }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong style="font-size: 1.1rem; color:  #1971ff;">FLAGGED:</strong> <span
+                        style="font-weight: bold; font-size: 1.1rem;">{{ 'Yes' if user.is_flagged else 'No' }}</span>
+                </li>
+            </ul>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-info btn-sm" style="border-radius: 25px; font-size: 1.1rem; padding: 10px 20px;" data-bs-toggle="modal" data-bs-target="#showedituserModal{{user.id }}">
+                Edit Profile
+            </button>
+                <div class="modal fade" id="showedituserModal{{user.id }}" tabindex="-1" aria-labelledby="showedituserModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="showedituserModalLabel">Edit User Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/edit_user/{{user.id}}" method="POST">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="full_name" value="{{user.full_name}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{user.email}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="dob" value="{{user.dob}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Educational Qualification</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="edu_qualification" value="{{user.edu_qualification}}">
+                                    </div>
+                                    
+                            
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

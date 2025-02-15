@@ -1,0 +1,161 @@
+{% extends "admin_dashboard.html" %}
+
+{% block title %} Show Quiz {% endblock %}
+
+{% block admin_content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-left" style="margin-top: 50px; font-weight: bolder;">QUIZ:-{{quiz.quiz_name}}</h1>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addQuestionModal">
+        Add Question to {{quiz.quiz_name}}
+      </button>
+
+      <div class="modal fade" id="addQuestionModal" tabindex="-1" aria-labelledby="addQuestionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addQuestionModalLabel">Add Question to {{quiz.quiz_name}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="/add_question/{{quiz.id}}" method="POST">
+                <div class="mb-3">
+                  <label for="question" class="form-label">Question</label>
+                  <input type="text" class="form-control" id="question" name="question" required>
+                </div>
+                <div class="mb-3">
+                  <label for="option_a" class="form-label">Option A</label>
+                  <input type="text" class="form-control" id="option_a" name="option_a" required>
+                </div>
+                <div class="mb-3">
+                  <label for="option_b" class="form-label">Option B</label>
+                  <input type="text" class="form-control" id="option_b" name="option_b" required>
+                </div>
+                <div class="mb-3">
+                  <label for="option_c" class="form-label">Option C</label>
+                  <input type="text" class="form-control" id="option_c" name="option_c" required>
+                </div>
+                <div class="mb-3">
+                  <label for="option_d" class="form-label">Option D</label>
+                  <input type="text" class="form-control" id="option_d" name="option_d" required>
+                </div>
+                <div class="mb-3">
+                  <label for="answer" class="form-label">Answer</label>
+                  <input type="text" class="form-control" id="answer" name="answer" required>
+                </div>
+                <div class="mb-3">
+                  <label for="hints" class="form-label">Hints</label>
+                  <textarea class="form-control" id="hints" name="hints" ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Question</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-left" style="margin-top: 10px; font-weight: bold; font-size: large">Here are the Questions
+        available in the Quiz</p>
+      <table class="table" style="margin-top: 50px; border: 2px solid black;">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Question</th>
+            <th scope="col">Option A</th>
+            <th scope="col">Option B</th>
+            <th scope="col">Option C</th>
+            <th scope="col">Option D</th>
+            <th scope="col" style="color:rgb(16, 191, 42)">Answer</th>
+            <th scope="col">Hints</th>
+
+            <th scope="col" style="width: auto">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for question in question %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ question.question }}</td>
+            <td>{{ question.option_a }}</td>
+            <td>{{ question.option_b }}</td>
+            <td>{{ question.option_c }}</td>
+            <td>{{ question.option_d }}</td>
+            <td style="color: rgb(16, 191, 42); font-weight: bold;">{{ question.answer }}</td>
+            <td>{{ question.hints }}</td>
+            <td>
+             
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editQuestionModal{{question.id}}">
+                Edit
+              </button>
+              <div class="modal fade" id="editQuestionModal{{question.id}}" tabindex="-1" aria-labelledby="editQuestionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editQuestionModalLabel">Edit Question</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="/edit_question/{{question.id}}" method="POST">
+                        <div class="mb-3">
+                          <label for="question" class="form-label">Question</label>
+                          <input type="text" class="form-control" id="question" name="question" value="{{question.question}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="option_a" class="form-label">Option A</label>
+                          <input type="text" class="form-control" id="option_a" name="option_a" value="{{question.option_a}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="option_b" class="form-label">Option B</label>
+                          <input type="text" class="form-control" id="option_b" name="option_b" value="{{question.option_b}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="option_c" class="form-label">Option C</label>
+                          <input type="text" class="form-control" id="option_c" name="option_c" value="{{question.option_c}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="option_d" class="form-label">Option D</label>
+                          <input type="text" class="form-control" id="option_d" name="option_d" value="{{question.option_d}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="answer" class="form-label">Answer</label>
+                          <input type="text" class="form-control" id="answer" name="answer" value="{{question.answer}}" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="hints" class="form-label">Hints</label>
+                          <textarea class="form-control" id="hints" name="hints" required>{{question.hints}}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                Delete
+              </button>
+              <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel">Delete Question</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to Delete this Question
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a href="/delete_question/{{question.id}}" class="btn btn-danger">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

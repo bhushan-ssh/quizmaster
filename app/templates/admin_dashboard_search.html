@@ -1,0 +1,69 @@
+{% extends "admin_dashboard.html" %}
+
+{% block title %} Users {% endblock %}
+
+{% block admin_content %}
+
+<div class="container">
+    <h3 class="text-center text-primary fw-bold mt-4">Search Results</h3>
+    <hr>
+    {% if users|length == 0 and units|length == 0 and subjects|length == 0 and quizzes|length == 0 %}
+        <h3 class="text-center text-danger fw-bold">No Results Found...!</h3>
+    {% else %}
+        <div class="row">
+            {% if users|length > 0 %}
+                <div class="col-md-4">
+                    <h4 class="text-center text-primary fw-bold">Users</h4>
+                    <ul class="list-group">
+                        {% for user in users %}
+                            {% if user.email != 'admin1234@gmail.com' %}
+                            <li class="list-group-item">{{ user.full_name }} </li>
+                            
+                            {% endif %}
+
+                        {% endfor %}
+                        <a class=" btn btn-primary" type="button" href="/admin_dashboard/users">View Details</a>
+                    </ul>
+                </div>
+            {% endif %}
+            {% if units|length > 0 %}
+                <div class="col-md-4">
+                    <h4 class="text-center text-primary fw-bold">Units</h4>
+                    <ul class="list-group">
+                        {% for unit in units %}
+                            <li class="list-group-item">{{ unit.unit_name }}</li>
+                            
+                        {% endfor %}
+                        <a class="btn btn-primary" type="button" href="/admin_dashboard">View Details</a>
+                    </ul>
+                </div>
+            {% endif %}
+            {% if subjects|length > 0 %}
+                <div class="col-md-4">
+                    <h4 class="text-center text-primary fw-bold">Subjects</h4>
+                    <ul class="list-group">
+                        {% for subject in subjects %}
+                            <li class="list-group-item">{{ subject.subject_name }}</li>
+                            
+                        {% endfor %}
+                        <a class="btn btn-primary" type="button" href="/admin_dashboard">View Details</a>
+                    </ul>
+                </div>
+            {% endif %}
+            {% if quizzes|length > 0 %}
+                <div class="col-md-4">
+                    <h4 class="text-center text-primary fw-bold">Quizzes</h4>
+                    <ul class="list-group">
+                        {% for quiz in quizzes %}
+                            <li class="list-group-item">{{ quiz.quiz_name }}</li>
+                           
+                        {% endfor %}
+
+                        <a class="btn btn-primary" type="button" href="/admin_dashboard">View Details</a>
+                    </ul>
+                </div>
+            {% endif %}
+
+    {% endif %}
+
+{% endblock %}

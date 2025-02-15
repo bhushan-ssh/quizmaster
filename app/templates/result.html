@@ -1,0 +1,28 @@
+{% extends "user_dashboard.html" %}
+
+{% block title %}User Results{% endblock %}
+
+{% block user_content %}
+<section class="container mt-4">
+    <h2 class="text-center text-primary fw-bold mb-4">Your Quiz Result</h2>
+
+    <!-- Latest Result -->
+    {% if results %}
+    <div class="card shadow-lg p-4 mb-4 border-primary">
+        <h3 class="text-center text-success fw-bold">Latest Result for {{quiz.quiz_name}}</h3>
+        <div class="card-body text-center">
+            <h4 class="fw-bold">Quiz: {{ results[0].quiz.quiz_name }}</h4>
+            <p><strong>Score:</strong> {{ results[0].score }}</p>
+            <p><strong>Date:</strong> {{ results[0].time_of_attempt  }}</p>
+            <p><strong>Subject:</strong> {{ results[0].quiz.unit.subject.subject_name }}</p>
+            <p><strong>Unit:</strong> {{ results[0].quiz.unit.unit_name }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if results|length == 0 %}
+        <h4 class="text-center text-danger fw-bold">No Results Available!</h4>
+    {% endif %}
+</section>
+
+{% endblock %}

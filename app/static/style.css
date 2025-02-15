@@ -1,0 +1,43 @@
+.alert{
+    text-align: center;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(248, 54, 54);
+
+}
+.alert-success{
+    text-align: center;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(113, 255, 113);
+}
+.alert-info{
+    text-align: center;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 128, 255);
+}
+
+.alert-warning{
+    text-align: center;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(244, 53, 53);
+}
+.solid-bg-navbar {
+    background-color: #989df9; 
+  }
+
+  
