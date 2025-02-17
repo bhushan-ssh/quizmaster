@@ -7,13 +7,11 @@
     <div class="row">
       <div class="col-md-12">
         <h1 class="text-left" style="margin-top: 50px; font-weight: bolder;">USERS</h1>
-        
-
-
-
-
+        {%if users|length == 1%}
+        <h4 style="margin-top: 50px; font-weight: bolder; color: rgb(181, 44, 44); text-align: center;">NO USERS FOUND</h4>
+        {%endif%}
+        {%if users|length > 1%}
         <p class="text-left">Here are the Users available in the system.</p>
-
         <table class="table" style="margin-top: 50px; border: 2px solid black;">
           <thead>
             <tr>
@@ -139,6 +137,7 @@
             {% endfor %}
           </tbody>
         </table>
+        {% endif %}
       </div>
       {% endblock %}
 
