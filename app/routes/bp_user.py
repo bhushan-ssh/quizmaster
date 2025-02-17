@@ -13,11 +13,15 @@ bp_user = Blueprint('bp_user', __name__)
 
 @bp_user.route("/user_dashboard", methods=['GET','POST'])
 def user_dashborad():
-    user_id = session.get('user')
-    user= User.query.filter_by(id=user_id).first()
-    quizzes = Quiz.query.all()
-    return render_template('user_dashboard.html',user=user,quizzes=quizzes)
+    if 'user' in session:
+         user_id = session.get('user')
+         user= User.query.filter_by(id=user_id).first()
+         quizzes = Quiz.query.all()
+         return render_template('user_dashboard.html',user=user,quizzes=quizzes)
+    else:
+         return redirect('/login')
 
+   
 @bp_user.route('/attempt_quiz/<int:quiz_id>')
 def start_quiz(quiz_id):
      if 'user' in session:
@@ -25,8 +29,8 @@ def start_quiz(quiz_id):
           session['quiz_id'] = quiz_id
           questions = Question.query.filter_by(quiz_id=quiz_id).all()
           user = User.query.filter_by(id=session['user']).first()
-          if quiz.date > date.today():
-                flash('Quiz not Available yet', category='error')
+          if quiz.date != date.today():
+                flash('Quiz not Available ', category='error')
                 return redirect('/user_dashboard')
         
           else:
@@ -57,7 +61,6 @@ def submit_quiz(quiz_id):
                 score += 1
 
         result = Result.query.filter_by(quiz_id=quiz_id, user_id=user_id).first()
-
         if result: 
            
             result.score = score  
@@ -83,7 +86,8 @@ def result():
         quiz = Quiz.query.filter_by(id=(session.get('quiz_id'))).first()
         quiz_id = session.get('quiz_id')
         results = Result.query.filter_by(user_id=user_id, quiz_id=quiz_id).order_by(Result.time_of_attempt).all()
-        return render_template('result.html', results=results, user= user,quiz=quiz)
+        questions = Question.query.filter_by(quiz_id=quiz_id).all()
+        return render_template('result.html', results=results, user= user,quiz=quiz, questions=questions)
     else:
         return redirect('/login')
 @bp_user.route('/user_dashboard/scores/')  
@@ -98,24 +102,31 @@ def scores():
 
 @bp_user.route('/user_profile')
 def user_profile():
-    user_id = session.get('user')
-    user= User.query.filter_by(id=user_id).first()
-    return render_template('user_profile.html',user=user)
+    if 'user' in session:
+        user_id = session.get('user')
+        user= User.query.filter_by(id=user_id).first()
+        return render_template('user_profile.html',user=user)
+    else:
+        return redirect('/login')
+    
 @bp_user.route('/edit_user/<int:user_id>',methods=['POST'])
 def edit_user(user_id):
-    user_id = session.get('user')
-    user= User.query.filter_by(id=user_id).first()
-    full_name=request.form['full_name']
-    email=request.form['email']
-    dob=request.form['dob']
-    edu_qualification=request.form['edu_qualification']
-    user.full_name=full_name
-    user.email=email
-    user.dob=dob
-    user.edu_qualification=edu_qualification
-    db.session.commit()
-    flash('Profile edited successfully!!!', category='success')
-    return redirect('/user_profile')
+    if 'user' in session:
+        user_id = session.get('user')
+        user= User.query.filter_by(id=user_id).first()
+        full_name=request.form['full_name']
+        email=request.form['email']
+        dob=request.form['dob']
+        edu_qualification=request.form['edu_qualification']
+        user.full_name=full_name
+        user.email=email
+        user.dob=dob
+        user.edu_qualification=edu_qualification
+        db.session.commit()
+        flash('Profile edited successfully!!!', category='success')
+        return redirect('/user_profile')
+    else:
+        return redirect('/login')
 
 @bp_user.route('/user_dashboard/summary')
 def user_dashboard_summary():

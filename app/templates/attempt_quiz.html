@@ -35,9 +35,10 @@
           <input type="radio" id="D_{{question.id}}" name="{{question.id}}" value="{{ question.option_d }}">
           <label for="D_{{question.id}}" ></label>{{ question.option_d }}
         </li>
-        <p class="text-primary" style="font-style: italic; font-weight: bold">HINT :-   {{ question.hints}}</p>
+        {% if question.hints %}
+        <p class="text-primary" style="font-style: italic; font-weight: bold">HINT :- {{ question.hints}}</p>
         <!-- <button type="submit" class="btn btn-primary mt-3">Submit</button> -->
-       
+        {% endif %}
       </ul>
     </div>
     {% endfor %}

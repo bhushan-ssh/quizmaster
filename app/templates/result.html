@@ -13,7 +13,7 @@
         <div class="card-body text-center">
             <h4 class="fw-bold">Quiz: {{ results[0].quiz.quiz_name }}</h4>
             <p><strong>Score:</strong> {{ results[0].score }}</p>
-            <p><strong>Date:</strong> {{ results[0].time_of_attempt  }}</p>
+            <p><strong>Date:</strong> {{ results[0].time_of_attempt }}</p>
             <p><strong>Subject:</strong> {{ results[0].quiz.unit.subject.subject_name }}</p>
             <p><strong>Unit:</strong> {{ results[0].quiz.unit.unit_name }}</p>
         </div>
@@ -21,8 +21,22 @@
     {% endif %}
 
     {% if results|length == 0 %}
-        <h4 class="text-center text-danger fw-bold">No Results Available!</h4>
+    <h4 class="text-center text-danger fw-bold">No Results Available!</h4>
     {% endif %}
+    <div class="card shadow-sm p-3 mb-3 border-primary">
+        <div class="card-body">
+            <h4 class="text-center text-success fw-bold">Correct Answers</h4>
+            {%for question in questions %}
+            <p class="card-title">{{ loop.index }}. {{ question.question }}</p>
+            <p class="card-text">
+                <strong>Answer: </strong> {{ question.answer }}
+            </p>
+            {%endfor%}
+        </div>
+    </div>
+
+    
+
 </section>
 
 {% endblock %}

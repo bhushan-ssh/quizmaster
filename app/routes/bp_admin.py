@@ -284,9 +284,11 @@ def logout():
     
 @bp_admin.route("/admin_dashboard", methods=['GET','POST'])
 def admin_dashborad():
-    users=User.query.all()
-    all_subjects= Subject.query.all()
-    return render_template('admin_dashboard.html',users=users,all_subjects=all_subjects)
+    if 'admin' in session:
+          users=User.query.all()
+          all_subjects= Subject.query.all()
+          return render_template('admin_dashboard.html',users=users,all_subjects=all_subjects)
+   
 
 
 @bp_admin.route('/flag_user/<int:user_id>')
