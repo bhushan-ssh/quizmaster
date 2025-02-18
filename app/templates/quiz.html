@@ -7,7 +7,9 @@
     <h2 class="text-center text-primary fw-bold">Quiz Results</h2>
     {% for quiz in quizzes %}
     <div class="card shadow-lg p-4 mt-4 mb-4 border-primary">
-        <h3 class="text-center text-success fw-bold">Quiz: {{quiz.quiz_name}}</h3>
+        <h3 class=" text-primary fw-bold">{{quiz.quiz_name}}</h3>
+        <p class="  text-primary fw-bold">Subject: {{quiz.unit.subject.subject_name}}</p>
+        <p class="  text-primary fw-bold"> Unit : {{quiz.unit.unit_name}}</p>
         <div class="card-body">
             <div class="row">
                 {% if results|length == 0 %}
