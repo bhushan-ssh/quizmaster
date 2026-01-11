@@ -76,3 +76,21 @@ QuizMaster/
 │
 ├── main.py               # Application entry point
 └── README.md
+
+
+
+## ▶️ How to Run the Project
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+venv\Scripts\activate   # Windows
+source venv/bin/activate # macOS/Linux
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python main.py
