@@ -103,6 +103,35 @@ https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
 
 ---
 
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Login Page</b></td>
+    <td align="center"><b>User Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="assets/home.png" width="100%"></td>
+    <td><img src="assets/user_dash.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Quiz Page</b></td>
+    <td align="center"><b>Admin Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="assets/attempt_quiz.png" width="100%"></td>
+    <td><img src="assets/admin_dash.png" width="100%"></td>
+  </tr>
+</table>
+
+<p align="center">
+  <b>Performance Analytics</b><br>
+  <img src="assets/analytics.png" width="80%">
+</p>
+
+
+---
+
 📚 What I Learned
 
 - Full-stack development using Flask
