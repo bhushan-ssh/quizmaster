@@ -94,3 +94,44 @@ pip install -r requirements.txt
 
 # Run the application
 python main.py
+```
+---
+📽 Project Demo
+
+🎥 Presentation Video:
+https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
+
+---
+
+📚 What I Learned
+
+- Full-stack development using Flask
+- MVC-style project structuring
+- Database design with SQLAlchemy
+- Data visualization using Python libraries
+- Git & GitHub workflow
+
+---
+
+## 👨‍🎓 Author
+**Bhushan Dattatray Sonawane**  
+BS Degree in Data Science and Applications, IIT Madras  
+📧 23f2003210@ds.study.iitm.ac.in  
+📧 bhushan.sonawane.tech@gmail.com
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
