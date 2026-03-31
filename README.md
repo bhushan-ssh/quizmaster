@@ -144,7 +144,7 @@ https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
 
 ## 👨‍🎓 Author
 **Bhushan Dattatray Sonawane**  
-BS Degree in Data Science and Applications, IIT Madras  
+BS Degree in Data Science and Applications, IIT Madras.  
 📧 23f2003210@ds.study.iitm.ac.in  
 📧 bhushan.sonawane.tech@gmail.com
 
