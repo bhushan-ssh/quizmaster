@@ -21,7 +21,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 - Manage users (flag/unflag users)
 - Add hints to quiz questions
 - View subject-wise top scores and quiz attempts
-- Analyze results using visualizations
+- Analyze results using visualizations.
 
 ---
 
