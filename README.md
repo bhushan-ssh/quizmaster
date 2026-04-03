@@ -14,7 +14,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 - Instant score calculation and feedback
 - Track performance using charts and graphs
 - Edit personal profile details
-- Search quizzes by subject, unit, or quiz name
+- Search quizzes by subject, unit, or quiz name.
 
 ### 🛠 Admin Features
 - Create, edit, and delete Subjects, Units, Quizzes, and Questions
