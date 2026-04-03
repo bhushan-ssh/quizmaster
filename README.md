@@ -27,9 +27,9 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 
 ## 📊 Data Visualization
 - Score trends displayed using graphs and pie charts.
-- Subject-wise performance analytics
-- User ranking insights
-- Visualizations generated using Matplotlib and Seaborn
+- Subject-wise performance analytics.
+- User ranking insights.
+- Visualizations generated using Matplotlib and Seaborn.
 
 ---
 
