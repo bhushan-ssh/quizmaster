@@ -9,7 +9,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 ## 🚀 Features
 
 ### 👤 User Features
-- View available subjects, units, and quizzes
+- View available subjects, units, and quizzes.
 - Attempt quizzes with multiple-choice questions
 - Instant score calculation and feedback
 - Track performance using charts and graphs
