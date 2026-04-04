@@ -11,7 +11,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 ### 👤 User Features
 - View available subjects, units, and quizzes.
 - Attempt quizzes with multiple-choice questions.
-- Instant score calculation and feedback
+- Instant score calculation and feedback.
 - Track performance using charts and graphs
 - Edit personal profile details
 - Search quizzes by subject, unit, or quiz name.
