@@ -18,7 +18,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 
 ### 🛠 Admin Features
 - Create, edit, and delete Subjects, Units, Quizzes, and Questions.
-- Manage users (flag/unflag users)
+- Manage users (flag/unflag users).
 - Add hints to quiz questions
 - View subject-wise top scores and quiz attempts
 - Analyze results using visualizations.
