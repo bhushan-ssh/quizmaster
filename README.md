@@ -7,8 +7,6 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 ---
 
 
-
-
 ## 🚀 Features
 
 ### 👤 User Features
