@@ -3,7 +3,12 @@
 QuizMaster is a full-stack web-based quiz application that allows users to attempt quizzes across multiple subjects while enabling administrators to manage quizzes, users, and performance analytics through an interactive dashboard.
 This project was developed as part of the BS Degree in Data Science and Applications at IIT Madras.
 
+
+
 ---
+
+
+
 
 ## 🚀 Features
 
