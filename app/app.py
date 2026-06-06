@@ -26,7 +26,6 @@ def add_admin():
         admin = User(email='admin1234@gmail.com', password='1234', full_name='Admin', edu_qualification='B.Tech Computer Science', dob='01/01/2000', if_admin=True)
         db.session.add(admin)
         db.session.commit()
-
 app.register_blueprint(bp_login)
 app.register_blueprint(bp_admin)
 app.register_blueprint(bp_user)
