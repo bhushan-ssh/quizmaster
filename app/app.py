@@ -11,8 +11,6 @@ from routes.bp_login import bp_login
 from routes.bp_admin import bp_admin
 from routes.bp_user import bp_user
 matplotlib.use('agg')
-
-
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__)
