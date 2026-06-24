@@ -12,7 +12,6 @@ from routes.bp_admin import bp_admin
 from routes.bp_user import bp_user
 matplotlib.use('agg')
 curr_dir = os.path.dirname(os.path.abspath(__file__))
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
