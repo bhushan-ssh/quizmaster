@@ -26,6 +26,8 @@ def add_admin():
 app.register_blueprint(bp_login)
 app.register_blueprint(bp_admin)
 app.register_blueprint(bp_user)
+
+     
           
 db.init_app(app)
 with app.app_context():
