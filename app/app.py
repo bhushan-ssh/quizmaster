@@ -25,10 +25,7 @@ def add_admin():
         db.session.commit()
 app.register_blueprint(bp_login)
 app.register_blueprint(bp_admin)
-app.register_blueprint(bp_user)
-
-     
-          
+app.register_blueprint(bp_user)  
 db.init_app(app)
 with app.app_context():
        db.create_all()
