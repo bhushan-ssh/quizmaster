@@ -1,13 +1,13 @@
-# QuizMaster 
+# QuizMaster 🧠
 
 QuizMaster is a full-stack web-based quiz application that allows users to attempt quizzes across multiple subjects while enabling administrators to manage quizzes, users, and performance analytics through an interactive dashboard.
 This project was developed as part of the BS Degree in Data Science and Applications at IIT Madras.
 
 ---
 
-##  Features
+## 🚀 Features
 
-###  User Features
+### 👤 User Features
 - View available subjects, units, and quizzes.
 - Attempt quizzes with multiple-choice questions.
 - Instant score calculation and feedback.
@@ -15,7 +15,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 - Edit personal profile details.
 - Search quizzes by subject, unit, or quiz name.
 
-### Admin Features
+### 🛠 Admin Features
 - Create, edit, and delete Subjects, Units, Quizzes, and Questions.
 - Manage users (flag/unflag users).
 - Add hints to quiz questions.
@@ -24,7 +24,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 
 ---
 
-##  Data Visualization
+## 📊 Data Visualization
 - Score trends displayed using graphs and pie charts.
 - Subject-wise performance analytics.
 - User ranking insights.
@@ -32,7 +32,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 
 ---
 
-##  Tech Stack
+## 🛠 Tech Stack
 
 **Frontend**
 - HTML.
@@ -59,7 +59,7 @@ This project was developed as part of the BS Degree in Data Science and Applicat
 
 ---
 
-##  Project Architecture
+## 🏗 Project Architecture
 
 ```text
 QuizMaster/
@@ -78,7 +78,7 @@ QuizMaster/
 
 
 
-##  How to Run the Project
+## ▶️ How to Run the Project
 
 ```bash
 # Create virtual environment
@@ -95,14 +95,14 @@ pip install -r requirements.txt
 python main.py
 ```
 ---
- Project Demo
+📽 Project Demo
 
- Presentation Video:-
+🎥 Presentation Video:-
 https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
 
 ---
 
-##  Screenshots
+## 📸 Screenshots
 
 <table>
   <tr>
@@ -131,7 +131,7 @@ https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
 
 ---
 
- What I Learned
+📚 What I Learned
 
 - Full-stack development using Flask
 - MVC-style project structuring
@@ -141,7 +141,7 @@ https://drive.google.com/file/d/1Zv0ve98wdyl41vHbVuEV-97YRNjKN3Sq/view
 
 ---
 
-##  Author
+## 👨‍🎓 Author
 **Bhushan Dattatray Sonawane**  
 BS Degree in Data Science and Applications, IIT Madras.  
 📧 23f2003210@ds.study.iitm.ac.in  
@@ -149,17 +149,3 @@ BS Degree in Data Science and Applications, IIT Madras.
 
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
